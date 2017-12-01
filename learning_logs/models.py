@@ -15,3 +15,11 @@ class Topic(models.Model):
 class Entry(models.Model):
     """有关某个主题的某个知识"""
     topic = models.ForeignKey(Topic)
+    text = models.TextField()
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name_plural = 'entries'
+
+    def __unicode__(self):
+        return self.text[:50] + '...'
